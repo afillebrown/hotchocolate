@@ -7,17 +7,18 @@ namespace StarWars
     public class OnReviewMessage
         : EventMessage
     {
-        public OnReviewMessage(Episode episode, Review review)
-            : base(CreateEventDescription(episode), review)
+        public OnReviewMessage(OnReviewInput input, Review review)
+            : base(CreateEventDescription(input), review)
         {
         }
 
-        private static EventDescription CreateEventDescription(Episode episode)
+        private static EventDescription CreateEventDescription(OnReviewInput input)
         {
             return new EventDescription("onReview",
-                new ArgumentNode("episode",
-                    new EnumValueNode(
-                        episode.ToString().ToUpperInvariant())));
+                new ArgumentNode("input",
+                    new ObjectValueNode(
+                        new ObjectFieldNode("episode",
+                            new EnumValueNode(input.Episode.ToString().ToUpperInvariant())))));
         }
     }
 }

@@ -9,7 +9,7 @@ namespace StarWars.Types
         {
             descriptor.Field(t => t.OnReview(default, default))
                 .Type<NonNullType<ReviewType>>()
-                .Argument("episode", arg => arg.Type<NonNullType<EpisodeType>>());
+                .Argument("input", arg => arg.Type<OnReviewInputType>());
         }
     }
 }

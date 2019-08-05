@@ -15,7 +15,7 @@ namespace StarWars
                 ?? throw new ArgumentNullException(nameof(repository));
         }
 
-        public Review OnReview(Episode episode, IEventMessage message)
+        public Review OnReview(OnReviewInput input, IEventMessage message)
         {
             return (Review)message.Payload;
         }

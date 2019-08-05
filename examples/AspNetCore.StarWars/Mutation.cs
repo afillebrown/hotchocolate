@@ -29,7 +29,7 @@ namespace StarWars
             [Service]IEventSender eventSender)
         {
             _repository.AddReview(episode, review);
-            await eventSender.SendAsync(new OnReviewMessage(episode, review));
+            await eventSender.SendAsync(new OnReviewMessage(new OnReviewInput { Episode = episode }, review));
             return review;
         }
     }
